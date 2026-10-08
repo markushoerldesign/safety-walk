@@ -96,9 +96,9 @@ module.exports = async (req, res) => {
     const r = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: { "content-type": "application/json", "x-api-key": process.env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01" },
-      body: JSON.stringify({ model: process.env.ANTHROPIC_MODEL || "claude-haiku-5-5", max_tokens: 400, temperature: 0.2, system: system(), messages: msgs })
+      body: JSON.stringify({ model: process.env.ANTHROPIC_MODEL || "claude-haiku-5-5", max_tokens: 400, system: system(), messages: msgs })
     });
-    if (!r.ok) throw new Error("upstream " + r.status);
+    if (!r.ok) { const t = await r.text(); throw new Error("upstream " + r.status + " " + t.slice(0, 300)); }
     const d = await r.json();
     const text = ((d.content || []).find(b => b.type === "text") || {}).text || NOINFO;
     res.setHeader("Cache-Control", "no-store");
