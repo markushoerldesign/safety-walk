@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Markus Hörl | Safety & Health Manager</title>
+<meta name="description" content="Interaktiver Safety Walk von Markus Hörl – Sicherheitsfachkraft mit Erfahrung in Arbeitssicherheit, Gesundheitsmanagement und Prävention.">
+<meta property="og:title" content="Markus Hörl | Safety & Health Manager">
+<meta property="og:description" content="Mehr als ein Lebenslauf – mein interaktiver Safety Walk.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--fg:#18212c;--mut:#5b6672;--card:#fff;--line:#d5dbe1;--navy:#17202b;--acc:#ff6a13;--accfg:#17202b;--floor:#dfe5ea;--floor2:#cdd5dc;--item:#8d9aa7;--item2:#5b6874;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161e;--fg:#e8edf2;--mut:#9aa6b2;--card:#1a232e;--line:#2b3744;--floor:#1f2a36;--floor2:#2a3745;--item:#5d6d7d;--item2:#8fa0b0}}
+:root[data-theme="dark"]{--bg:#10161e;--fg:#e8edf2;--mut:#9aa6b2;--card:#1a232e;--line:#2b3744;--floor:#1f2a36;--floor2:#2a3745;--item:#5d6d7d;--item2:#8fa0b0}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);font:400 16px/1.55 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px clamp(16px,4vw,48px);background:var(--navy);color:#fff}
+header b{font-weight:800;letter-spacing:.01em}
+header nav{display:flex;gap:10px}
+.btn{display:inline-block;border:2px solid var(--acc);background:var(--acc);color:var(--accfg);font:800 15px Manrope,sans-serif;padding:11px 20px;border-radius:4px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.sm{padding:7px 14px;font-size:14px}
+.btn:hover{filter:brightness(1.07)}
+.hero{background:var(--navy);color:#fff;padding:clamp(28px,6vw,72px) clamp(16px,4vw,48px) clamp(36px,6vw,72px);transition:all .5s ease;overflow:hidden}
+.hero h1{margin:0 0 12px;font-weight:800;font-size:clamp(34px,7vw,84px);line-height:1;letter-spacing:-.03em;max-width:12em}
+.hero .sub{font-size:clamp(18px,2.4vw,26px);font-weight:600;max-width:30em;margin:0 0 20px;color:#dfe6ed}
+.hero p{max-width:40em;color:#b9c5d0;margin:0 0 24px}
+.hero.min{padding-top:14px;padding-bottom:14px;max-height:64px}
+.hero.min>*:not(h1){display:none}
+.hero.min h1{font-size:20px;margin:0}
+.walk{padding:clamp(12px,3vw,32px) clamp(16px,4vw,48px)}
+.stage{position:relative;max-width:1100px;margin:0 auto;transition:margin .4s}
+.stage svg{width:100%;height:auto;display:block}
+.zone .slab{fill:var(--floor);stroke:var(--floor2);stroke-width:2}
+.zone .side{fill:var(--floor2)}
+.zone .a{fill:var(--item)}.zone .b{fill:var(--item2)}
+.zone .l{fill:none;stroke:var(--item2);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.zone .o{fill:var(--acc)}.zone .s{fill:#e9b998}.zone .g{fill:#4fae7c}.zone .y{fill:#f2c200}.zone .k{fill:#2b3744}.zone .w{fill:#fff}
+.zone .dz{fill:none;stroke:var(--acc);stroke-width:3;stroke-dasharray:6 5}.zone .l.t{stroke-width:9}.zone .l.o2{stroke:var(--acc)}.zone .l.w2{stroke:#fff;stroke-width:3}
+.zone text{font:700 15px Manrope,sans-serif;fill:var(--mut)}.zone.on text{fill:var(--fg)}
+.zone{transition:transform .35s ease}
+.zone.on{transform:translateY(-8px)}
+.zone.on .slab{stroke:var(--acc);stroke-width:4}
+.zone.on .a{fill:var(--acc)}
+.hs{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;border:2px solid var(--navy);background:var(--card);color:var(--fg);font:800 14px Manrope,sans-serif;cursor:pointer;transition:transform .2s}
+.hs::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--acc);opacity:0;animation:pulse 2.4s infinite}
+.hs:hover,.hs:focus-visible{transform:translate(-50%,-50%) scale(1.15)}
+.hs.seen{background:var(--navy);color:#fff}
+.hs.seen::after{animation:none}
+.hs.cur{background:var(--acc);color:var(--accfg);border-color:var(--acc)}
+.hs .tip{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);white-space:nowrap;background:var(--navy);color:#fff;font-size:13px;padding:5px 10px;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .2s}
+.hs:hover .tip,.hs:focus-visible .tip{opacity:1}
+@keyframes pulse{0%{transform:scale(.85);opacity:.7}70%,100%{transform:scale(1.5);opacity:0}}
+.prog{display:flex;justify-content:center;gap:6px;margin:18px 0 0;padding:0;list-style:none}
+.prog li button{width:40px;height:8px;border:0;border-radius:4px;background:var(--line);cursor:pointer;padding:0}
+.prog li.seen button{background:var(--item2)}
+.prog li.cur button{background:var(--acc)}
+.cards{display:none;gap:10px;margin-top:18px;grid-template-columns:1fr}
+.cards button{display:flex;gap:14px;align-items:center;text-align:left;width:100%;padding:16px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--line);border-radius:6px;font:600 17px Manrope,sans-serif;color:var(--fg);cursor:pointer}
+.cards button.seen{border-left-color:var(--item2)}
+.cards button.cur{border-left-color:var(--acc)}
+.cards b{font-size:20px;min-width:28px}
+aside{position:fixed;top:0;right:0;bottom:0;width:min(440px,38vw);min-width:340px;background:var(--card);border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(0,0,0,.18);padding:calc(24px + env(safe-area-inset-top,0px)) 28px calc(24px + env(safe-area-inset-bottom,0px));overflow-y:auto;transform:translateX(105%);transition:transform .45s cubic-bezier(.2,.7,.2,1);z-index:10}
+aside.open{transform:none}
+aside .x{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;background:none;border:0;color:var(--fg);font:600 15px Manrope,sans-serif;cursor:pointer;padding:6px 8px}
+.num{font-weight:800;font-size:44px;color:var(--acc);line-height:1}
+aside h2{margin:6px 0 14px;font-size:26px;letter-spacing:-.01em}
+.stmt{font-weight:800;font-size:19px;line-height:1.35;margin:0 0 16px;padding-left:14px;border-left:4px solid var(--acc)}
+aside ul{padding-left:20px;margin:0 0 16px}
+aside li{margin-bottom:5px}
+.fact{display:inline-block;background:var(--navy);color:#fff;font-weight:800;padding:8px 14px;border-radius:4px;margin:4px 0 14px}
+.big{font-size:44px;font-weight:800;line-height:1;margin:0}
+.quote{color:var(--mut);font-style:italic}
+.chat{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{font:600 13px Manrope,sans-serif;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:16px;padding:6px 11px;cursor:pointer;text-align:left}
+.chips button:hover{border-color:var(--acc)}
+.chat input{width:100%;padding:11px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--fg);font:inherit;margin:6px 0 8px}
+.log{max-height:260px;overflow-y:auto;margin:8px 0}
+.log p{margin:0 0 10px;padding:10px 12px;border-radius:6px;background:var(--bg);font-size:15px}
+.log p.q{background:var(--navy);color:#fff}
+.note{font-size:12px;color:var(--mut)}
+.end{display:none;background:var(--navy);color:#fff;text-align:center;padding:clamp(40px,8vw,96px) 20px}
+.end.show{display:block}
+.end h2{margin:0 0 20px;font-size:clamp(30px,6vw,68px);line-height:1.02;letter-spacing:-.03em;font-weight:800}
+.end p{max-width:36em;margin:0 auto 18px;color:#c4cfd9}
+.end .row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+.end .row a{color:#fff}
+@media (max-width:760px){.hs{display:none}.cards{display:grid}.prog{display:none}
+aside{top:auto;left:0;width:100%;min-width:0;height:88%;border-left:0;border-top:1px solid var(--line);border-radius:14px 14px 0 0;transform:translateY(105%)}
+.hero.min{max-height:56px}}
+@media (min-width:761px){body.panel .stage{margin-right:max(0px,calc(min(440px,38vw) - 4vw))}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><b>Markus Hörl, MSc MA</b><nav><a class="btn sm ghost" id="hcv" href="#">Lebenslauf</a><a class="btn sm" id="hmail" href="#">Kontakt</a></nav></header>
+
+<section class="hero" id="hero">
+<h1>Mehr als ein Lebenslauf</h1>
+<p class="sub">Mein interaktiver Safety Walk: Wie ich Arbeitssicherheit und Gesundheit denke.</p>
+<p><b>Willkommen zum 90-Sekunden-Safety-Walk.</b> 6 Stationen. Jahrelange Erfahrung. Ein Ziel: Arbeit sicherer und gesünder machen.<br>Ich verbinde Arbeitssicherheit, Gesundheitsmanagement, Prävention und Kommunikation zu einem ganzheitlichen Verständnis von Health &amp; Safety.</p>
+<button class="btn" id="start">Safety Walk starten</button>
+</section>
+
+<main class="walk" id="walk">
+<div class="stage" id="stage">
+<svg viewBox="0 0 900 520" role="img" aria-label="Isometrische Illustration einer modernen Produktionshalle mit sechs Bereichen: Roboterarm, Produktionslinie, ergonomischer Arbeitsplatz, Ruhebereich, Safety-Board und Leitstand."><title>Produktionshalle mit sechs Stationen</title><g id="zones"></g></svg>
+</div>
+<ol class="prog" id="prog" aria-label="Fortschritt"></ol>
+<div class="cards" id="cards"></div>
+</main>
+
+<aside id="panel" role="dialog" aria-modal="false" aria-labelledby="pt" tabindex="-1"><button class="x" id="close">× Schließen</button><div id="pc"></div></aside>
+
+<section class="end" id="end">
+<h2>Safety is not a department.<br>It is a culture.</h2>
+<p>Ich würde mich freuen, meine nächsten Projekte in Ihrem Unternehmen umzusetzen – mit einem ganzheitlichen Blick auf Arbeitssicherheit, Gesundheit und Prävention.</p>
+<p><b>Markus Hörl, MSc MA</b></p>
+<div class="row"><a class="btn" id="ecv" href="#">Lebenslauf herunterladen</a><a class="btn ghost" id="email" href="#">Kontakt aufnehmen</a><a id="eli" href="#">LinkedIn</a></div>
+<p class="note" id="ephone" style="margin-top:16px"></p>
+</section>
+
+<script>
+/* ===== ZENTRALE INHALTE – hier Texte, Links und Fragen anpassen ===== */
+const CONFIG={
+ email:"markushoerl@gmx.at",
+ phone:"+43 699 117 061 06",
+ cvUrl:"Markus_Hoerl_Lebenslauf_2026.pdf", /* PDF neben die index.html legen oder hier URL eintragen */
+ letterUrl:"",                      /* optional: Motivationsschreiben */
+ linkedin:"",                       /* optional */
+ chatEndpoint:"/api/chat"
+};
+const STATIONS=[
+{id:"machine",t:"Mensch & Maschine",x:190,y:225,s:"Sicherheit beginnt dort, wo Mensch, Technik und Arbeitsumgebung zusammenspielen.",
+ list:["Ausbildung zur Sicherheitsfachkraft","Abschlussarbeit zur Evaluierung eines durch Mensch und Roboter kollaborierend betriebenen Arbeitsbereichs","Technischer Hintergrund","Strukturiertes Verständnis von Gefahren, Risiken und Prävention"],fact:"SFK + Technik + Prävention"},
+{id:"production",t:"Safety in Production",x:450,y:165,s:"Arbeitssicherheit muss im Produktionsalltag funktionieren – nicht nur auf dem Papier.",
+ intro:"Health & Safety Manager bei Magna Steyr Fahrzeugtechnik. Gesundheits- und Sicherheitsprojekte in einem industriellen Umfeld mit bis zu",big:"10.000",bigl:"Mitarbeitenden",
+ list:["Sicherheitsbegehungen","Arbeitsplatzevaluierungen","Gefährdungsbeurteilungen","Unfallanalysen","Präventionsmaßnahmen","Sicherheitsunterweisungen","Ergonomische Projekte","Safety-Kennzahlen und Dokumentation","Zusammenarbeit mit Führungskräften, Arbeitsmedizin und Betriebsrat"]},
+{id:"healthy-work",t:"Healthy Work",x:710,y:200,s:"Gesunde Arbeit ist ein zentraler Teil nachhaltiger Prävention.",
+ list:["Masterstudium Sportwissenschaften","Gesundheitsmanagement","Betriebliche Gesundheitsförderung","BGF-/BGM-Projekte bei Merkur Lifestyle","Prävention und Gesundheitsförderung","Verbindung von Arbeitssicherheit und Gesundheit"],fact:"Safety + Health"},
+{id:"mental-health",t:"Mental Health",x:215,y:405,s:"Moderne Arbeitssicherheit umfasst auch psychische Gesundheit und Stressprävention.",
+ intro:"Gründer und Geschäftsführer von Mind Entry.",
+ list:["Entwicklung eigener Anti-Stress-Produkte","Stressprävention","Workshops, Seminare und Vorträge","Psychische Gesundheit","Kommunikation von Gesundheitsthemen"]},
+{id:"safety-culture",t:"Safety Culture",x:450,y:420,s:"Sicherheit entsteht, wenn Menschen mitgenommen werden.",
+ intro:"Mein Verständnis nachhaltiger Sicherheitskultur verbindet:",
+ list:["Kommunikation","Projektmanagement","Workshops","Führung und Organisation","Verantwortung und Ethik","Einbindung von Mitarbeitenden und Führungskräften"],
+ quote:"Regeln schaffen Sicherheit erst dann nachhaltig, wenn Menschen ihren Sinn verstehen und sie im Arbeitsalltag mittragen."},
+{id:"safety-manager",t:"Safety Manager",x:700,y:385,s:"Mein Profil auf einen Blick – als Lebenslauf und im direkten Dialog.",last:true}
+];
+const CHIPS=["Welche Erfahrung hat Markus im industriellen Arbeitsschutz?","Was hat Markus bei Magna Steyr gemacht?","Welche Qualifikationen bringt Markus als Sicherheitsfachkraft mit?","Welche Erfahrung hat Markus mit Gesundheitsmanagement?","Wie verbindet Markus Safety und Mental Health?"];
+const NOINFO="Dazu liegen in Markus Hörls Bewerbungsunterlagen keine ausreichenden Informationen vor.";
+const OFFTOPIC="Dieser Assistent beantwortet ausschließlich Fragen zum beruflichen Profil von Markus Hörl.";
+/* ===== ENDE INHALTE ===== */
+
+const $=s=>document.querySelector(s),seen=new Set();let cur=-1;
+const D=(x,y)=>`M${x} ${y-42}L${x+95} ${y}L${x} ${y+42}L${x-95} ${y}Z`;
+const P=(x,y,v,h)=>`<rect class="k" x="${x-5}" y="${y-8}" width="4" height="8"/><rect class="k" x="${x+1}" y="${y-8}" width="4" height="8"/><rect class="${v?'o':'b'}" x="${x-6}" y="${y-26}" width="12" height="19" rx="3"/><circle class="s" cx="${x}" cy="${y-32}" r="5.5"/>${h?`<path class="y" d="M${x-6.5} ${y-33}a6.5 6.5 0 0 1 13 0Z"/>`:''}`;
+const HEART=(x,y)=>`<path class="o" transform="translate(${x} ${y})" d="M0 0C-9-9-20 2 0 17C20 2 9-9 0 0Z"/>`;
+const ART=[
+ c=>{const x=c.x,y=c.y;return `<path class="dz" d="M${x-10} ${y-28}L${x+62} ${y}L${x-10} ${y+30}L${x-82} ${y}Z"/><rect class="b" x="${x-64}" y="${y-12}" width="34" height="12"/><path class="l t" d="M${x-47} ${y-12}V${y-38}L${x-18} ${y-58}L${x+6} ${y-36}"/><circle class="a" cx="${x-47}" cy="${y-40}" r="8"/><circle class="a" cx="${x-18}" cy="${y-58}" r="7"/><rect class="b" x="${x+1}" y="${y-36}" width="10" height="10" rx="2"/><rect class="o" x="${x-4}" y="${y-12}" width="20" height="12"/>${P(x+46,y+6,1,1)}<path class="o" d="M${x+66} ${y-34}l9 16h-18Z"/>`},
+ c=>{const x=c.x,y=c.y;return `<path class="b" d="M${x-78} ${y+2}L${x-6} ${y-30}L${x+74} ${y+6}L${x+2} ${y+36}Z"/><path class="l w2" d="M${x-40} ${y-14}L${x+38} ${y+22}"/><rect class="a" x="${x-34}" y="${y-36}" width="62" height="14" rx="6"/><rect class="a" x="${x-18}" y="${y-48}" width="30" height="13" rx="5"/><circle class="k" cx="${x-20}" cy="${y-21}" r="5"/><circle class="k" cx="${x+16}" cy="${y-21}" r="5"/><rect class="b" x="${x+38}" y="${y-62}" width="6" height="42"/><rect class="b" x="${x+70}" y="${y-62}" width="6" height="42"/><rect class="b" x="${x+36}" y="${y-66}" width="42" height="9"/><rect class="o" x="${x-82}" y="${y-22}" width="6" height="26"/>${P(x-52,y+14,1,1)}`},
+ c=>{const x=c.x,y=c.y;return `<rect class="b" x="${x-34}" y="${y-18}" width="70" height="8"/><rect class="b" x="${x-30}" y="${y-10}" width="5" height="12"/><rect class="b" x="${x+27}" y="${y-10}" width="5" height="12"/><rect class="k" x="${x-6}" y="${y-48}" width="32" height="22" rx="2"/><rect class="g" x="${x-2}" y="${y-44}" width="24" height="14"/><rect class="b" x="${x+8}" y="${y-26}" width="4" height="8"/><rect class="b" x="${x-44}" y="${y-28}" width="8" height="26" rx="3"/><rect class="b" x="${x-52}" y="${y-8}" width="24" height="6" rx="2"/><circle class="s" cx="${x-30}" cy="${y-44}" r="6"/><rect class="g" x="${x-38}" y="${y-38}" width="14" height="20" rx="4"/>${HEART(x+58,y-50)}<path class="l w2" d="M${x+42} ${y-30}h8l5-8l5 14l5-6h8"/>`},
+ c=>{const x=c.x,y=c.y;return `<rect class="b" x="${x-66}" y="${y-30}" width="64" height="12" rx="6"/><rect class="b" x="${x-66}" y="${y-18}" width="64" height="18" rx="5"/><circle class="s" cx="${x-34}" cy="${y-42}" r="6"/><rect class="g" x="${x-41}" y="${y-36}" width="14" height="14" rx="4"/><rect class="b" x="${x+8}" y="${y-70}" width="60" height="42" rx="4"/><circle class="a" cx="${x+28}" cy="${y-50}" r="10"/><circle class="a" cx="${x+46}" cy="${y-50}" r="10"/><path class="l w2" d="M${x+37} ${y-58}V${y-42}M${x+24} ${y-52}q6-4 8 2M${x+50} ${y-52}q-6-4-8 2"/><rect class="b" x="${x+34}" y="${y-12}" width="14" height="12"/><circle class="g" cx="${x+38}" cy="${y-20}" r="8"/><circle class="g" cx="${x+48}" cy="${y-24}" r="7"/>`},
+ c=>{const x=c.x,y=c.y;return `<rect class="b" x="${x-52}" y="${y-76}" width="104" height="52" rx="3"/><rect class="o" x="${x-52}" y="${y-76}" width="104" height="10"/><path class="l w2" d="M${x-42} ${y-54}l4 4l8-9M${x-42} ${y-40}l4 4l8-9"/><rect class="w" x="${x-24}" y="${y-56}" width="40" height="4"/><rect class="w" x="${x-24}" y="${y-42}" width="28" height="4"/><rect class="g" x="${x+26}" y="${y-44}" width="6" height="12"/><rect class="g" x="${x+35}" y="${y-52}" width="6" height="20"/>${P(x-40,y+6,1,1)}${P(x,y+12,1,1)}${P(x+40,y+6,0,1)}`},
+ c=>{const x=c.x,y=c.y;return `<rect class="b" x="${x-58}" y="${y-72}" width="80" height="48" rx="3"/><rect class="k" x="${x-52}" y="${y-66}" width="68" height="36"/><rect class="g" x="${x-46}" y="${y-48}" width="8" height="12"/><rect class="o" x="${x-34}" y="${y-56}" width="8" height="20"/><rect class="g" x="${x-22}" y="${y-42}" width="8" height="6"/><path class="o" d="M${x+2} ${y-62}l10 4v10q0 8-10 12q-10-4-10-12v-10Z"/><rect class="b" x="${x+28}" y="${y-58}" width="30" height="34" rx="2"/><rect class="w" x="${x+33}" y="${y-52}" width="20" height="3"/><rect class="w" x="${x+33}" y="${y-44}" width="20" height="3"/><rect class="w" x="${x+33}" y="${y-36}" width="14" height="3"/><rect class="b" x="${x-62}" y="${y-18}" width="90" height="8"/><rect class="b" x="${x-8}" y="${y-10}" width="5" height="12"/><circle class="s" cx="${x-18}" cy="${y-26}" r="5.5"/>`}
+];
+STATIONS.forEach((s,i)=>{
+ $("#zones").insertAdjacentHTML("beforeend",`<g class="zone" id="z${i}"><path class="side" d="M${s.x-95} ${s.y}L${s.x} ${s.y+42}L${s.x+95} ${s.y}V${s.y+12}L${s.x} ${s.y+54}L${s.x-95} ${s.y+12}Z"/><path class="slab" d="${D(s.x,s.y)}"/>${ART[i](s)}<text x="${s.x}" y="${s.y+74}" text-anchor="middle">${i+1} · ${s.t}</text></g>`);
+ $("#stage").insertAdjacentHTML("beforeend",`<button class="hs" id="h${i}" style="left:${s.x/9}%;top:${(s.y-30)/5.2}%" aria-label="Station ${i+1}: ${s.t}" data-i="${i}">${i+1}<span class="tip">${i+1} – ${s.t}</span></button>`);
+ $("#cards").insertAdjacentHTML("beforeend",`<button id="c${i}" data-i="${i}"><b>${i+1}</b>${s.t}</button>`);
+ $("#prog").insertAdjacentHTML("beforeend",`<li id="p${i}"><button data-i="${i}" aria-label="Station ${i+1}: ${s.t}"></button></li>`);
+});
+function mark(){STATIONS.forEach((_,i)=>["h","c","p"].forEach(k=>{const e=$("#"+k+i);e.classList.toggle("seen",seen.has(i)&&i!==cur);e.classList.toggle("cur",i===cur)}));
+ STATIONS.forEach((_,i)=>$("#z"+i).classList.toggle("on",i===cur))}
+function esc(t){const d=document.createElement("div");d.textContent=t;return d.innerHTML}
+function open(i,push){
+ cur=i;seen.add(i);const s=STATIONS[i];let h=`<div class="num">0${i+1}</div><h2 id="pt">${esc(s.t)}</h2><p class="stmt">${esc(s.s)}</p>`;
+ if(s.intro)h+=`<p>${esc(s.intro)}</p>`;
+ if(s.big)h+=`<p class="big">${s.big}</p><p><b>${s.bigl}</b></p>`;
+ if(s.list)h+=`<ul>${s.list.map(l=>`<li>${esc(l)}</li>`).join("")}</ul>`;
+ if(s.fact)h+=`<div class="fact">${esc(s.fact)}</div>`;
+ if(s.quote)h+=`<p class="quote">„${esc(s.quote)}“</p>`;
+ if(s.last)h+=cvBlock();
+ if(!s.last)h+=`<button class="btn" id="next">Nächste Station →</button>`;
+ else h+=`<p style="margin-top:18px"><a class="btn ghost" href="#end" id="toend">Zum Abschluss</a></p>`;
+ $("#pc").innerHTML=h;$("#panel").classList.add("open");document.body.classList.add("panel");mark();
+ if(!s.last)$("#next").onclick=()=>open(i+1);
+ if(s.last){initChat();$("#end").classList.add("show");$("#toend").onclick=()=>{close();setTimeout(()=>$("#end").scrollIntoView(),50)}}
+ if(seen.size===STATIONS.length)$("#end").classList.add("show");
+ if(push!==false)history.replaceState(null,"","#"+s.id);
+ $("#panel").focus({preventScroll:true});
+}
+function close(){$("#panel").classList.remove("open");document.body.classList.remove("panel");cur=-1;mark()}
+function cvBlock(){return `<h3>Lebenslauf</h3><p>Mein beruflicher Weg, meine Qualifikationen und meine Erfahrungen im Bereich Arbeitssicherheit, Gesundheitsmanagement und Prävention.</p><p><a class="btn" href="${esc(CONFIG.cvUrl)}" target="_blank" rel="noopener">↓ Lebenslauf als PDF</a> ${CONFIG.letterUrl?`<a class="btn ghost sm" href="${esc(CONFIG.letterUrl)}" target="_blank" rel="noopener">Motivationsschreiben</a>`:""}</p>
+<div class="chat"><h3 style="margin:0 0 6px">Fragen Sie meinen Lebenslauf</h3><p>Sie möchten mehr über meine Erfahrung, meine Qualifikationen oder meinen beruflichen Hintergrund erfahren? Stellen Sie eine Frage – die Antwort basiert auf meinem hinterlegten Lebenslauf.</p>
+<div class="chips">${CHIPS.map(c=>`<button type="button">${esc(c)}</button>`).join("")}</div>
+<div class="log" id="log" aria-live="polite"></div>
+<input id="q" maxlength="300" placeholder="Was möchten Sie über meinen beruflichen Hintergrund wissen?" aria-label="Frage zum beruflichen Hintergrund"><button class="btn sm" id="ask">Frage stellen</button>
+<p class="note">KI-gestützte Antworten auf Basis meines hinterlegten Lebenslaufs und Bewerbungsprofils. Antworten können Fehler enthalten. Maßgeblich sind die Originalunterlagen. <a href="datenschutz.html">Datenschutz</a></p></div>`}
+/* CV-Wissensbasis (aus dem Lebenslauf) */
+const FACTS=[
+[/magna|steyr|industri|arbeitsschutz|arbeitssicherheit|begehung|unfall|gefährdung|health ?& ?safety|sicherheit/i,"Markus Hörl war von 11/2016 bis 07/2018 Health & Safety Manager bei Magna Steyr Fahrzeugtechnik in Graz. Er plante und setzte Gesundheits- und Sicherheitsprojekte für bis zu 10.000 Mitarbeitende um, führte Sicherheitsbegehungen, Arbeitsplatzevaluierungen und Gefährdungsbeurteilungen durch, analysierte Arbeitsunfälle und arbeitete mit Führungskräften, Arbeitsmedizin und Betriebsrat zusammen."],
+[/sicherheitsfach|sfk|qualifi|ausbildung|roboter|abschlussarbeit|wifi|rettung/i,"Markus Hörl absolvierte 01/2017–06/2017 die Fachausbildung der Sicherheitsfachkräfte am WIFI Graz; die Abschlussarbeit evaluierte einen durch Mensch und Roboter kollaborierend betriebenen Arbeitsbereich. Er ist außerdem Rettungssanitäter (Ausbildung im Präsenzdienst) und hat die HTBLA Ortweinschule (Tiefbau) mit Auszeichnung abgeschlossen."],
+[/gesund|bgf|bgm|merkur|sport|ergonom|prävention/i,"Markus Hörl hat Sportwissenschaften an der Karl-Franzens-Universität Graz studiert (Bachelor 2014, Master 2016). Von 09/2022 bis 04/2024 war er Gesundheitsmanager bei Merkur Lifestyle GmbH mit Projektmanagement in der betrieblichen Gesundheitsförderung und Teamleitung für Kinder- und Jugendevents."],
+[/mental|stress|mind entry|psych|workshop|seminar|vortrag|buch|publikation|gründ|unternehm/i,"Von 03/2019 bis 09/2022 war Markus Hörl Geschäftsführer von Mind Entry in Graz: Entwicklung, Produktion und Vertrieb eigener Anti-Stress-Produkte sowie Vorträge, Workshops und Seminare zum Thema Stress. Publikationen: „Mit Stress hoch hinaus!“ (Eigenverlag, 2020) und „Die Glücklichmacherin“ (Der Wolf Verlag, 2022)."],
+[/ethik|\bki\b|künstliche|machine learning|master/i,"Markus Hörl absolvierte 04/2024–04/2025 berufsbegleitend das Masterstudium Angewandte Ethik an der Karl-Franzens-Universität Graz. Seine Masterthesis behandelt Automated Machine Learning in KMU und die ethischen Anforderungen an die Transparenz von KI."],
+[/aktuell|derzeit|fast motion|sales|office|jetzt/i,"Aktuell ist Markus Hörl Sales- und Officemanager bei Fast Motion GmbH in Graz (Vertrieb von Baustellenkameras für Zeitrafferaufnahmen, Kundenkommunikation, Organisation)."],
+[/sprache|englisch|führerschein|edv|software|adobe|office/i,"Markus Hörl spricht verhandlungssicher Englisch, verfügt über sehr gute EDV-Kenntnisse (MS Office, Adobe Creative Suite) und besitzt den Führerschein der Klassen A und B."],
+[/kontakt|telefon|mail|erreich/i,"Kontakt: markushoerl@gmx.at, +43 699 117 061 06."]
+];
+const CV=FACTS.map(f=>f[1]).join("\n");
+function ctx(){return CV}
+function local(q){if(/safety.*(mental|psych)|(mental|psych).*safety/i.test(q))return "Markus Hörl verbindet klassischen Arbeitsschutz (Sicherheitsfachkraft, Health & Safety Manager bei Magna Steyr) mit Stressprävention und psychischer Gesundheit (Mind Entry, Workshops, Publikationen) sowie betrieblicher Gesundheitsförderung (Merkur Lifestyle).";
+ const h=FACTS.filter(f=>f[0].test(q)).slice(0,2).map(f=>f[1]);if(h.length)return h.join(" ");return /markus|hörl|erfahr|beruf|lebenslauf|kompetenz|stärke/i.test(q)?NOINFO:OFFTOPIC}
+let last=0;
+async function answer(q){
+ if(CONFIG.chatEndpoint){try{const r=await fetch(CONFIG.chatEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:q})});const j=await r.json();return j.answer||NOINFO}catch(e){}}
+ try{const sm=window.claude&&await window.claude.use("sample");if(sm){const r=await sm(`Du bist der digitale CV-Assistent von Markus Hörl. Beantworte Fragen ausschließlich auf Grundlage der folgenden Informationen. Erfinde niemals Erfahrungen, Qualifikationen, Zeiträume oder Verantwortlichkeiten. Fehlt eine Information, antworte exakt: "${NOINFO}". Bei themenfremden Fragen antworte exakt: "${OFFTOPIC}". Antworte sachlich in 2–5 Sätzen und sprich über Markus Hörl in der dritten Person.\n\nINFORMATIONEN:\n${ctx()}\n\nFRAGE: ${q}`,{cache:false});return r.text}}catch(e){}
+ return local(q)}
+function initChat(){
+ const go=async t=>{t=(t||$("#q").value).trim().slice(0,300);if(!t)return;if(Date.now()-last<2000)return;last=Date.now();$("#q").value="";
+  const L=$("#log");L.insertAdjacentHTML("beforeend",`<p class="q">${esc(t)}</p>`);const a=document.createElement("p");a.textContent="…";L.appendChild(a);
+  const r=await answer(t);a.textContent=r.slice(0,900);L.scrollTop=L.scrollHeight};
+ $("#ask").onclick=()=>go();$("#q").onkeydown=e=>{if(e.key==="Enter")go()};
+ document.querySelectorAll(".chips button").forEach(b=>b.onclick=()=>go(b.textContent))}
+/* Verdrahtung */
+document.querySelectorAll(".hs,.cards button,.prog button").forEach(b=>b.onclick=()=>open(+b.dataset.i));
+$("#close").onclick=close;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+$("#start").onclick=()=>{$("#hero").classList.add("min");$("#walk").scrollIntoView();$("#h0").focus({preventScroll:true})};
+const mail="mailto:"+CONFIG.email;
+["hmail","email"].forEach(i=>$("#"+i).href=mail);
+["hcv","ecv"].forEach(i=>{$("#"+i).href=CONFIG.cvUrl;$("#"+i).target="_blank"});
+CONFIG.linkedin?$("#eli").href=CONFIG.linkedin:$("#eli").remove();
+$("#ephone").innerHTML=esc(CONFIG.email)+(CONFIG.phone?" · "+esc(CONFIG.phone):"");
+const hi=STATIONS.findIndex(s=>"#"+s.id===location.hash);if(hi>=0){$("#hero").classList.add("min");open(hi,false)}
+</script>
+<footer class="note" style="text-align:center;padding:16px"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></footer>
+</body>
+</html>
